@@ -10,7 +10,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from scipy.optimize import curve_fit
 
 # --- CONFIGURATION ---
-SENSOR_SPACING = 0.10  # Meters between sensors
+SENSOR_SPACING = 0.10 
 
 # --- FONT SETTINGS ---
 # Adjusted for better visibility
