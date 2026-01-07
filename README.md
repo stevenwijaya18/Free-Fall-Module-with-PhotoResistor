@@ -56,17 +56,22 @@ Proteus Simulation
 Ensure you have Python installed, then install the dependencies:
 ```bash
 pip install numpy matplotlib scipy pyserial
+```
+Then run the python interface file
 
 ### 3. Proteus Simulation Setup
-1. Open the .pdsprj file in the proteus/ folder.
-2. Double-click the Arduino component.
-3. Load Firmware: Browse to .pio/build/nanoatmega328/firmware.hex.
-CRITICAL SETTINGS:
-- Set CKSEL Fuses to: (1111) Ext. Crystal 8.0- MHz
-- Set Clock Frequency to: 16MHz
-4. Run the simulation.
+1.  Open the `.pdsprj` file in the `proteus/` folder.
+2.  Double-click the Arduino component.
+3.  **Load Firmware:** Browse to `.pio/build/nanoatmega328/firmware.hex`.
+4.  **CRITICAL SETTINGS:**
+    * Set **CKSEL Fuses** to: `(1111) Ext. Crystal 8.0- MHz`
+    * Set **Clock Frequency** to: `16MHz`
+5.  Run the simulation.
 
-🐛 Troubleshooting
-1. Garbage Data in Serial? Ensure both the code and the Serial Monitor/Proteus Terminal are set to 57600 baud.
-2. Simulation Too Slow? Check that the Proteus processor clock frequency is manually typed as 16MHz (default is often 1MHz).
-3. Python Can't Connect? Close any other software (like Arduino IDE Serial Monitor) that might be using the COM port.
+## 🐛 Troubleshooting
+* **Garbage Data in Serial?** Ensure both the code and the Serial Monitor/Proteus Terminal are set to **57600 baud**.
+* **Simulation Too Slow?** Check that the Proteus processor clock frequency is manually typed as `16MHz` (default is often 1MHz).
+* **Python Can't Connect?** Close any other software (like Arduino IDE Serial Monitor) that might be using the COM port.
+
+---
+*Created by Steven Wijaya*
