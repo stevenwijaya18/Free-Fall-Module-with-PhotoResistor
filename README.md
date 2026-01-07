@@ -20,8 +20,7 @@ The system replaces manual stopwatches with microsecond-level timing using direc
 *(Place your screenshots here!)*
 
 | Python Interface | Proteus Simulation |
-| :---: | :---: |
-| ![GUI Screenshot](path/to/your/gui_screenshot.png) | ![Proteus Screenshot](path/to/your/proteus_screenshot.png) |
+| ![Python Interface](image.png) | ![Proteus Simulation](image-1.png)|
 
 ## 🛠️ Hardware & Pinout
 
