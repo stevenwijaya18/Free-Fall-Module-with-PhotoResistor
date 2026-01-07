@@ -8,11 +8,11 @@
 const uint16_t TIMER_RELOAD = 65285;
 const uint8_t SPACING = 10;
 
-volatile uint32_t timer_1ms = 0;
-volatile uint16_t jarak = 0;
-volatile uint8_t hitung_sensor = 0;
-volatile bool flag_start = false;
-volatile bool request_print = false;
+uint32_t timer_1ms = 0;
+uint16_t jarak = 0;
+uint8_t hitung_sensor = 0;
+bool flag_start = false;
+bool request_print = false;
 
 ISR(TIMER1_OVF_vect) {
     TCNT1 = TIMER_RELOAD;
@@ -36,7 +36,6 @@ ISR(INT1_vect) {
 }
 
 void setup() {
-    // --- CHANGED BAUDRATE HERE ---
     Serial.begin(57600);
 
     DDRD |= (1 << MAGNET_PIN_BIT);
