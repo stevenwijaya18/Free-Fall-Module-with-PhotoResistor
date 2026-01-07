@@ -5,7 +5,7 @@
 ![Language](https://img.shields.io/badge/Language-C%2B%2B%20%7C%20Python-orange)
 
 ## 📖 Overview
-This project is an automated system designed to calculate the gravitational acceleration constant ($g$) with high precision. It consists of an **Embedded Firmware** module (Arduino Nano) that controls an electromagnet and captures sensor timing, and a **Desktop GUI** (Python) that visualizes the drop data in real-time and performs curve fitting to determine gravity.
+This project is an automated system designed to calculate the gravitational acceleration constant ($g$) with high precision. It consists of an Embedded Firmware module (Arduino Nano) that controls an electromagnet and captures sensor timing, and a Desktop GUI(Python) that visualizes the drop data in real-time and performs curve fitting to determine gravity.
 
 The system replaces manual stopwatches with microsecond-level timing using direct AVR Timer1 register manipulation.
 
