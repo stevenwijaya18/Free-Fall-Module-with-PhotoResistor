@@ -73,6 +73,3 @@ After all library installed, you can run the python interface file and connect t
 * **Garbage Data in Serial?** Ensure both the code and the Serial Monitor/Proteus Terminal are set to **57600 baud**.
 * **Simulation Too Slow?** Check that the Proteus processor clock frequency is manually typed as `16MHz` (default is often 1MHz).
 * **Python Can't Connect?** Close any other software (like Arduino IDE Serial Monitor) that might be using the COM port.
-
----
-*Created by Steven Wijaya*
