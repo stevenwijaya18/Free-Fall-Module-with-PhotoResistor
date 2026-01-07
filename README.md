@@ -22,7 +22,7 @@ Python Interface
 ![Python Interface](documentation/python.png)
 
 Proteus Simulation
-[Proteus Simulation](documentation/proteus.png)
+![Proteus Simulation](documentation/proteus.png)
 
 ## 🛠️ Hardware & Pinout
 
