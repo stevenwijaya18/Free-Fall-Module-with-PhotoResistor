@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter.font as tkfont
 from tkinter import ttk, messagebox
 import serial
 import serial.tools.list_ports
@@ -9,11 +10,8 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from scipy.optimize import curve_fit
 
-# --- CONFIGURATION ---
 SENSOR_SPACING = 0.10 
 
-# --- FONT SETTINGS ---
-# Adjusted for better visibility
 FONT_UI_MAIN = ("Segoe UI", 20)       
 FONT_UI_BOLD = ("Segoe UI", 20, "bold") 
 FONT_LOG_TEXT = ("Segoe UI", 20)      
@@ -70,6 +68,9 @@ class FreeFallApp:
         self.port_combo.pack(side=tk.LEFT, padx=5)
         # Force option menu text color for the dropdown list
         self.root.option_add('*TCombobox*Listbox.foreground', 'black')
+        # Use a proper tk Font object for the dropdown list to avoid option parsing issues
+        combo_list_font = tkfont.Font(family=FONT_UI_MAIN[0], size=FONT_UI_MAIN[1])
+        self.root.option_add('*TCombobox*Listbox.font', combo_list_font)
         
         ttk.Button(top_container, text="Refresh", command=self.refresh_ports).pack(side=tk.LEFT, padx=10)
         
