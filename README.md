@@ -57,7 +57,7 @@ Ensure you have Python installed, then install the dependencies:
 ```bash
 pip install numpy matplotlib scipy pyserial
 ```
-Then run the python interface file
+After all library installed, you can run the python interface file and connect the port used for simulation and run the simulation.
 
 ### 3. Proteus Simulation Setup
 1.  Open the `.pdsprj` file in the `proteus/` folder.
@@ -67,6 +67,7 @@ Then run the python interface file
     * Set **CKSEL Fuses** to: `(1111) Ext. Crystal 8.0- MHz`
     * Set **Clock Frequency** to: `16MHz`
 5.  Run the simulation.
+6.  If you want to connect the proteus simulation with the python interface serial, add compim components for virtual communication.
 
 ## 🐛 Troubleshooting
 * **Garbage Data in Serial?** Ensure both the code and the Serial Monitor/Proteus Terminal are set to **57600 baud**.
