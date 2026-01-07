@@ -26,38 +26,30 @@ class FreeFallApp:
         self.root.title("Free Fall Experiment Interface")
         self.root.geometry("1200x850") 
 
-        # --- FORCE BLACK TEXT STYLING ---
         self.style = ttk.Style()
-        self.style.theme_use('clam') # 'clam' allows us to override colors easier
+        self.style.theme_use('clam') 
         
-        # 1. Force the global foreground (text color) to BLACK
         self.style.configure('.', font=FONT_UI_MAIN, foreground="black", background="#f0f0f0")
         
-        # 2. Specifically force standard widgets to be black
         self.style.configure('TLabel', foreground="black", background="#f0f0f0")
         self.style.configure('TButton', foreground="black", background="#e1e1e1")
         self.style.configure('TCombobox', foreground="black", fieldbackground="white", selectbackground="#ccc")
         
-        # 3. Force Group Box (LabelFrame) titles to be black
         self.style.configure('TLabelframe', foreground="black", background="#f0f0f0")
         self.style.configure('TLabelframe.Label', font=FONT_UI_BOLD, foreground="black", background="#f0f0f0")
 
-        # Serial Variables
         self.ser = None
         self.is_connected = False
         self.serial_data = []
         self.sensor_positions = []
         
-        # Build GUI
         self.create_widgets()
         self.refresh_ports()
 
     def create_widgets(self):
-        # --- Control Panel (Top) ---
         control_frame = ttk.LabelFrame(self.root, text="Connection Settings", padding=15)
         control_frame.pack(side=tk.TOP, fill=tk.X, padx=15, pady=10)
 
-        # Top container
         top_container = ttk.Frame(control_frame)
         top_container.pack(fill=tk.X)
 
@@ -66,9 +58,7 @@ class FreeFallApp:
         self.port_var = tk.StringVar()
         self.port_combo = ttk.Combobox(top_container, textvariable=self.port_var, width=15, state="readonly", font=FONT_UI_MAIN)
         self.port_combo.pack(side=tk.LEFT, padx=5)
-        # Force option menu text color for the dropdown list
         self.root.option_add('*TCombobox*Listbox.foreground', 'black')
-        # Use a proper tk Font object for the dropdown list to avoid option parsing issues
         combo_list_font = tkfont.Font(family=FONT_UI_MAIN[0], size=FONT_UI_MAIN[1])
         self.root.option_add('*TCombobox*Listbox.font', combo_list_font)
         
@@ -79,25 +69,19 @@ class FreeFallApp:
         
         ttk.Button(top_container, text="Reset / New Run", command=self.reset_data).pack(side=tk.LEFT, padx=30)
 
-        # Status Label
         self.status_var = tk.StringVar(value="Status: Disconnected")
         self.lbl_status = ttk.Label(top_container, textvariable=self.status_var, font=FONT_UI_BOLD)
         self.lbl_status.pack(side=tk.RIGHT, padx=10)
-        # Manually set red/black logic later, but start black-compatible
 
-        # --- Main Content Area ---
         content_frame = ttk.Frame(self.root)
         content_frame.pack(fill=tk.BOTH, expand=True, padx=15, pady=5)
 
-        # Left: Data Log
         log_frame = ttk.LabelFrame(content_frame, text="Sensor Log (µs)", width=300)
         log_frame.pack(side=tk.LEFT, fill=tk.Y, padx=5)
         
-        # FORCE Black text on the log box (fg="black")
         self.txt_log = tk.Text(log_frame, width=20, height=20, state='disabled', font=FONT_LOG_TEXT, fg="black", bg="white")
         self.txt_log.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
-        # Right: Graph
         graph_frame = ttk.LabelFrame(content_frame, text="Position vs Time Analysis")
         graph_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=5)
 
@@ -107,13 +91,11 @@ class FreeFallApp:
         self.canvas = FigureCanvasTkAgg(self.figure, master=graph_frame)
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
 
-        # Results Label - FORCE Black
         self.result_var = tk.StringVar(value="Waiting for drop...")
         self.lbl_result = ttk.Label(graph_frame, textvariable=self.result_var, font=FONT_RESULT, foreground="black")
         self.lbl_result.pack(pady=15)
 
     def style_plot_initial(self):
-        # Force Matplotlib text to be black
         self.ax.set_title("Waiting for Data...", fontsize=GRAPH_TITLE_SIZE, color='black')
         self.ax.set_xlabel("Time (s)", fontsize=GRAPH_LABEL_SIZE, color='black')
         self.ax.set_ylabel("Position (m)", fontsize=GRAPH_LABEL_SIZE, color='black')
@@ -149,12 +131,10 @@ class FreeFallApp:
             print(f"Fitting error: {e}")
             self.ax.set_title("Analysis (Insufficient Data)", fontsize=GRAPH_TITLE_SIZE, color='black')
 
-        # Re-apply styling
         self.ax.set_xlabel("Time (s)", fontsize=GRAPH_LABEL_SIZE, color='black')
         self.ax.set_ylabel("Position (m)", fontsize=GRAPH_LABEL_SIZE, color='black')
         self.ax.tick_params(axis='both', which='major', labelsize=GRAPH_TICK_SIZE, labelcolor='black')
         
-        # Legend text color
         legend = self.ax.legend(fontsize=GRAPH_TICK_SIZE)
         plt.setp(legend.get_texts(), color='black')
         
@@ -174,7 +154,7 @@ class FreeFallApp:
                 self.is_connected = True
                 self.btn_connect.config(text="Disconnect")
                 self.status_var.set(f"Connected: {port}")
-                self.lbl_status.config(foreground="green") # Green for connected
+                self.lbl_status.config(foreground="green") 
                 
                 self.thread = threading.Thread(target=self.read_serial)
                 self.thread.daemon = True
@@ -187,7 +167,7 @@ class FreeFallApp:
             if self.ser: self.ser.close()
             self.btn_connect.config(text="Connect")
             self.status_var.set("Disconnected")
-            self.lbl_status.config(foreground="red") # Red for disconnected
+            self.lbl_status.config(foreground="red") 
 
     def reset_data(self):
         self.serial_data = []
@@ -238,7 +218,6 @@ class FreeFallApp:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    # High-DPI Fix
     try:
         from ctypes import windll
         windll.shcore.SetProcessDpiAwareness(1)
