@@ -63,7 +63,7 @@ After all library installed, you can run the python interface file and connect t
 1.  Open the `.pdsprj` file in the `proteus/` folder.
 2.  Double-click the Arduino component.
 3.  **Load Firmware:** Browse to `.pio/build/nanoatmega328/firmware.hex`.
-4.  **CRITICAL SETTINGS:**
+4.  **ATMega328p Settings:**
     * Set **CKSEL Fuses** to: `(1111) Ext. Crystal 8.0- MHz`
     * Set **Clock Frequency** to: `16MHz`
 5.  Run the simulation.
